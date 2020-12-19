@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+   <head>
+      <meta name="viewport" content="width=device-width, intial-scale=1">
+      <style>
+         .aligncenter {
+         text-align: center;
+         }
+        #submit {
+             color: white;
+             display: inline-block;
+             background: green;
+             border: solid;
+             border-width: thin;
+             padding: 7px 15px;
+             font-weight: 700;
+             border-radius: 3px;
+             white-space: nowrap;
+             cursor: pointer;
+             font-size: 10pt;
+         }
+         #submit:hover {
+             background:red;
+             box-shadow: 0px 0px 1px #777;
+         }
+
+        .inputfile {
+        	width: 0.1px;
+        	height: 0.1px;
+        	opacity: 0;
+        	overflow: hidden;
+        	position: absolute;
+        	z-index: -1;
+        }
+
+        .inputfile + label {
+             color: white;
+             display: inline-block;
+             background: green;
+             border: solid;
+             border-width: thin;
+             padding: 7px 15px;
+             font-weight: 700;
+             border-radius: 3px;
+             white-space: nowrap;
+             cursor: pointer;
+             font-size: 10pt;
+        }
+
+        .inputfile:focus + label,
+        .inputfile + label:hover {
+            background-color: red;
+        }
+
+        .inputfile + label {
+        	cursor: pointer; /* "hand" cursor */
+        }
+
+        .inputfile:focus + label {
+        	outline: 1px dotted #000;
+        	outline: -webkit-focus-ring-color auto 5px;
+        }
+
+        img {
+        	image-rendering: -webkit-optimize-contrast;
+        }
+
+      </style>
+   <body style="background-color:#67d498;font-family: sans-serif;color:#ffffff">
+      <title>The Jinglematic</title>
+      <p class = "aligncenter"><img src="/images/jinglematic_small.png"/ ></p>
+      <h2 class = "aligncenter">Select an mp3 file to get jingled</h2>
+      </p>
+      <form method="post" action="/" enctype="multipart/form-data" class = "aligncenter">
+         <dl>
+            <p class = "aligncenter">
+                <input type="file" name="file" id="file" class="inputfile" />
+                    <label for="file">Choose a file</label>
+                                <input type="submit" value="Send to the elves" id="submit">
+            </p>
+         </dl>
+         <p class = "aligncenter">
+         </p>
+               <p class = "aligncenter">
+         {% with messages = get_flashed_messages() %}
+         {% if messages %}
+      <ul class=flashes>
+         {% for message in messages %}
+         <p class = "aligncenter">{{ message }}</p>
+         {% endfor %}
+      </ul>
+      {% endif %}
+      {% endwith %}
+      </form>
+   </body>
+   </head>
+</html>
